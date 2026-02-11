@@ -1,0 +1,1108 @@
+:root {
+    --primary: #19233A;        /* Dark Blue */
+    --secondary: #707745;       /* Olive Green */
+    --accent: #C88A6A;          /* Soft Terracotta */
+    --background: #FAF2E9;      /* Light Off-White/Beige */
+    --subtle-bg: #EAE0D5;       /* Neutral Beige */
+    --text-on-light: #333333;  /* Dark Grey Text */
+    --text-on-dark: #FAF2E9;   /* Light Off-White Text */
+    --border-color: #DCD1C4;    /* Light Border Color */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth; /* Enable smooth scrolling */
+}
+
+/* General responsive best practices */
+img,
+iframe,
+video {
+    max-width: 100%;
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Improve text wrapping */
+body {
+    overflow-x: hidden;
+    word-wrap: break-word; /* For older browsers */
+    overflow-wrap: break-word; /* Standard */
+    font-family: 'Open Sans', sans-serif; 
+    font-size: 110% ;
+    background-color: var(--background); /* Use new background */
+    color: var(--text-on-light); /* Default text color */
+    line-height: 1.6;
+}
+
+header {
+    background-color: var(--primary);
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    color: var(--text-on-dark);
+}
+
+header h1,
+header p { /* Apply body font to header paragraph */
+    font-family: 'Open Sans', sans-serif; 
+    color: var(--text-on-dark);
+}
+
+header h1.header-title { /* Override for specific header title */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; /* Bold */
+}
+
+nav {
+    background-color: var(--secondary); /* Use Olive */
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Shrinking nav bar on scroll */
+.nav-scrolled {
+    padding: 0.5rem 0;
+    background-color: var(--secondary); /* Use Olive Green color */
+    backdrop-filter: blur(5px);
+}
+
+nav a {
+    color: var(--text-on-dark);
+    text-decoration: none;
+    padding: 0.5rem 1.5rem;
+    margin: 0 0.5rem;
+    border-radius: 3px;
+    transition: all 0.3s;
+    position: relative;
+}
+
+nav a:hover {
+    background-color: var(--accent); /* Use Terracotta for hover */
+    color: white; /* Keep white text on hover for contrast */
+}
+
+/* Indicator for active nav item */
+nav a.active {
+    background-color: var(--accent); /* Use Terracotta for active */
+    color: white; /* Keep white text on active */
+}
+
+/* Back to top button */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--secondary); /* Keep Olive */
+    color: var(--text-on-dark); /* Use light text */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 999;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--background); /* Make hero lighter than sections */
+    padding: 3rem 1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    transition: transform 0.3s;
+    color: var(--text-on-light); /* Default text for hero */
+}
+
+.hero:hover {
+    transform: translateY(-5px);
+}
+
+.hero img {
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    border: 5px solid var(--secondary);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hero h2 {
+    color: var(--secondary); /* Use Olive heading color */
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: 0 auto;
+    color: var(--text-on-light); /* Use standard light bg text */
+}
+
+section {
+    margin-bottom: 3rem;
+    background: var(--subtle-bg); /* Use subtle background */
+    color: var(--text-on-light); /* Ensure text contrast */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+
+section:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Section anchor offset for smooth scrolling */
+section::before {
+    content: "";
+    display: block;
+    height: 80px; /* Adjust if nav height changes */
+    margin-top: -80px;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 700; 
+    color: var(--secondary); /* Use new secondary (olive) for headings */
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent);
+    font-weight: 700; /* Ensure h2 is bold */
+}
+
+.service-card {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: all 0.3s;
+    border-left: 10px solid var(--border-color);
+    background-color: #F5F5DC; /* Soft pastel color */
+    color: var(--text-on-light); /* Default card text */
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    border-left: 10px solid var(--secondary); /* Use Olive on hover */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Therapy Service Cards */
+.service-card.service-card-primary-bg {
+    background-color: var(--primary); /* Dark blue bg */
+    color: var(--text-on-dark); /* Light text */
+    cursor: default; /* Not clickable */
+    border-left-color: var(--secondary); /* Olive border */
+}
+.service-card.service-card-primary-bg:hover {
+     border-left-color: var(--accent); /* Terracotta on hover */
+}
+.service-card.service-card-primary-bg h3,
+.service-card.service-card-primary-bg p {
+    color: var(--text-on-dark);
+}
+
+/* Training Service Cards (Clickable) */
+.service-card.service-card-clickable { /* This class is not currently used in HTML, but defined */
+    background-color: var(--secondary); /* Olive bg */
+    color: var(--text-on-dark); /* Light text */
+    cursor: pointer;
+    border-left-color: var(--accent); /* Terracotta border */
+}
+.service-card.service-card-clickable:hover {
+    background-color: var(--accent); /* Terracotta bg on hover */
+    border-left-color: var(--secondary); /* Olive border on hover */
+}
+.service-card.service-card-clickable h3,
+.service-card.service-card-clickable p {
+     color: var(--text-on-dark);
+}
+
+[onclick^="toggleTraining"] { /* Make cards with onclick attribute appear clickable */
+    cursor: pointer;
+}
+
+
+.service-card h3 {
+    /* color set by .service-card-primary-bg or defaults */
+    margin-bottom: 1rem;
+}
+
+.price-list {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.price-list th, .price-list td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color); /* Use new border color */
+    transition: background-color 0.3s;
+    color: var(--text-on-light); /* Default text */
+}
+
+.price-list th {
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 700;
+    background-color: var(--secondary); /* Use Olive */
+    color: var(--text-on-dark);
+}
+
+.price-list tr:hover td {
+    background-color: var(--accent); /* Highlight with accent color */
+    color: var(--text-on-dark); /* Text on accent hover */
+    transition: background-color 0.3s ease-in-out;
+}
+
+.price-list tr:last-child td {
+    border-bottom: none;
+}
+
+.testimonials { /* This class is defined but not used in the current HTML */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.testimonial-card { /* This class is defined but not used in the current HTML */
+    background-color: var(--background); /* Use main light bg */
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--secondary); /* Use Olive border */
+    transition: all 0.3s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--text-on-light); /* Ensure text color */
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-left: 4px solid var(--accent); /* Use Terracotta on hover */
+}
+
+.contact-form { /* This class is defined but not used in the current HTML */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.contact-form .full-width {
+    grid-column: span 2;
+}
+
+.form-group { /* For contact form if added */
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    position: absolute;
+    top: 0.8rem;
+    left: 0.8rem;
+    color: var(--text-on-light);
+    opacity: 0.7; /* Make it slightly faded */
+    pointer-events: none;
+    transition: all 0.3s;
+}
+
+.form-group input:focus + label,
+.form-group textarea:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group textarea:not(:placeholder-shown) + label {
+    top: -0.5rem;
+    left: 0.5rem;
+    font-size: 0.8rem;
+    background-color: var(--background); /* Match page bg */
+    padding: 0 0.3rem;
+    color: var(--secondary); /* Olive when active */
+    opacity: 1;
+}
+
+input, textarea, button { /* General form elements, button styling overridden later */
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    width: 100%;
+    background-color: var(--background); /* Inputs match page bg */
+    color: var(--text-on-light);
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--secondary); /* Olive border on focus */
+    box-shadow: 0 0 0 2px rgba(112, 119, 69, 0.2); /* Olive with alpha */
+}
+
+input::placeholder, textarea::placeholder { /* Hide placeholder if using floating label solely */
+    color: transparent;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+button { /* For submit buttons in forms if added */
+    background-color: var(--secondary); /* Olive button */
+    color: var(--text-on-dark); /* Light text */
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover {
+    background-color: var(--accent); /* Terracotta on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button::after { /* Ripple effect */
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(250, 242, 233, 0.5); /* Use --text-on-dark with alpha */
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+button:focus:not(:active)::after {
+    animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+    0% { transform: scale(0, 0); opacity: 0.5; }
+    20% { transform: scale(25, 25); opacity: 0.3; }
+    100% { opacity: 0; transform: scale(40, 40); }
+}
+
+footer {
+    background-color: var(--primary);
+    color: var(--text-on-dark);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 300px; /* Adjust for better wrapping on medium screens */
+    margin-bottom: 1.5rem;
+    padding: 0 1rem;
+}
+
+.footer-section h3 {
+    margin-bottom: 1rem;
+    color: var(--text-on-dark); /* Ensure footer headings are light */
+}
+
+
+.social-icons { /* This class is defined but not used in the current HTML */
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-icons a {
+    color: var(--text-on-dark);
+    font-size: 1.5rem;
+    transition: color 0.3s;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--secondary); /* Use Olive */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.social-icons a:hover {
+    color: var(--text-on-dark);
+    background-color: var(--accent); /* Use Terracotta */
+    transform: translateY(-3px);
+}
+
+.image-container { /* This class is defined but not used in the current HTML */
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.image-container img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    display: block; /* Prevents bottom space */
+}
+
+.image-container:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.loader { /* For contact form if added */
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 3px solid var(--border-color);
+    border-top: 3px solid var(--secondary); /* Keep Olive */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
+    vertical-align: middle; /* Align with button text */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--secondary); /* Use Olive */
+    color: var(--text-on-dark); /* Use light text */
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s; /* Added transform transition */
+    z-index: 1000;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0); /* Ensure it's properly positioned */
+}
+
+
+/* --- Start: Styles moved from inline (and some new specific styles) --- */
+
+.hero-subtitle {
+    font-size: 1em; 
+    color: var(--primary);
+}
+.hero-subtitle span {
+    font-size: 1.5em; 
+    color: var(--primary); 
+}
+.hero-description {
+    color: var(--primary);
+}
+
+.o-mnie-container {
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 40px; 
+    align-items: stretch; 
+}
+.o-mnie-text-column {
+    flex: 2; 
+    min-width: 300px; 
+}
+.o-mnie-text {
+    color: var(--primary);
+}
+.o-mnie-text-bold {
+    color: var(--primary); 
+    font-weight: bold;
+}
+.o-mnie-image-column {
+    flex: 1; 
+    min-width: 250px; 
+    display: flex; 
+    align-items: stretch; 
+    position: relative;
+}
+.o-mnie-image {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    position: relative; 
+    z-index: 1; 
+}
+
+.section-title-center { 
+    color: var(--primary); 
+    text-align: center; 
+    font-size: 1.5rem; 
+    margin-bottom: 2rem;
+    border-bottom: none; 
+}
+
+.oferta-section-block {
+    background-color: #FFFFFF; 
+    border: 2px solid var(--accent); 
+    padding: 2rem; 
+    border-radius: 8px; 
+    margin-bottom: 3rem;
+}
+.oferta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 1.5rem;
+}
+.oferta-grid-two-column {
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 1.5rem;
+}
+
+.service-card-details-toggle {
+    font-family: 'Open Sans', sans-serif; 
+    font-weight: 400;
+    font-size: 0.85rem; 
+    font-style: italic; 
+    margin: 0;
+    color: var(--text-on-dark); 
+}
+.service-card-primary-bg .service-card-details-toggle {
+    color: var(--text-on-dark); 
+}
+
+/* MODIFIED Training Details */
+.training-details {
+    margin-top: 2rem; 
+    background-color: #F5F5DC; 
+    border-radius: 8px; 
+    color: var(--text-on-light);
+    max-height: 0; 
+    overflow: hidden; 
+    opacity: 0; 
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out, opacity 0.5s ease-out;
+    box-sizing: border-box; /* ADDED */
+    /* padding: 0; Implicitly, will be applied when open */
+}
+
+.training-details:not(.hidden) {
+    padding: 1.5rem; 
+    max-height: 3000px; /* INCREASED */
+    opacity: 1;
+}
+
+/* ADDED Rules for collapsing margins */
+.training-details > *:first-child {
+    margin-top: 0;
+}
+.training-details > *:last-child {
+    margin-bottom: 0;
+}
+
+.training-details h4 {
+    font-size: 1.2rem; 
+    font-weight: 700; 
+    margin-bottom: 1rem;
+    color: var(--secondary); 
+}
+.training-details ul {
+    margin-bottom: 1.5rem; 
+    padding-left: 1.2rem; 
+    color: var(--text-on-light);
+}
+.training-details-table {
+    width: 100%; 
+    max-width: 500px; 
+    border-collapse: collapse; 
+    margin-bottom: 1.5rem; 
+    color: var(--text-on-light);
+}
+.training-details-table th,
+.training-details-table td {
+    text-align: left; 
+    padding: 8px; 
+    border-bottom: 1px solid var(--border-color);
+}
+.training-details-bank-table {
+    width: 100%; 
+    max-width: 500px; 
+    margin: 1.5rem auto; 
+    border-collapse: collapse; 
+    color: var(--text-on-light);
+}
+.training-details-bank-table td {
+    padding: 8px; 
+    text-align: center; 
+    border-bottom: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
+}
+.training-parent-info-box {
+    background-color: var(--subtle-bg); 
+    padding: 1rem 1.5rem; 
+    margin-top: 2rem; 
+    border-radius: 8px; 
+    border: 2px solid var(--accent); 
+}
+.training-parent-info-box h4 {
+    margin-top: 0; 
+    color: var(--accent); 
+}
+.training-parent-info-box ul {
+    padding-left: 1.2rem;
+}
+
+.cennik-section {
+    display: flex; 
+    align-items: center;
+    gap: 2rem; 
+}
+.cennik-image-column {
+    flex: 1; 
+}
+.cennik-image {
+    width: 100%; 
+    height: auto; 
+    border-radius: 8px;
+}
+.cennik-table-column {
+    flex: 2;
+}
+.price-list-cell-primary {
+    color: var(--text-on-light);
+}
+.cennik-note {
+    margin-top: 1.5rem; 
+    color: var(--text-on-light);
+}
+
+.kontakt-section {
+    background-color: var(--subtle-bg); 
+    color: var(--text-on-light);
+    padding: 2rem 0; 
+}
+.kontakt-container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 2rem 2rem 2rem; 
+}
+.kontakt-flex-container {
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 2rem;
+}
+.kontakt-info-map-column {
+    flex: 2; 
+    min-width: 300px;
+}
+.kontakt-location-title { 
+    margin-top: 2rem;
+    color: var(--secondary); 
+}
+.kontakt-map-container {
+    height: 300px; 
+    margin-top: 1rem; 
+    border-radius: 8px; 
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+.kontakt-map-iframe {
+    border:0; 
+    width: 100%; 
+    height: 100%; 
+}
+.kontakt-photo-column {
+    flex: 1; 
+    min-width: 300px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    position: relative; 
+}
+.kontakt-photo {
+    width: 100%; 
+    max-width: 400px; 
+    height: auto; 
+    border-radius: 8px; 
+    margin-top: 1rem;
+    position: relative; 
+    z-index: 1; 
+}
+
+.footer-flex-container { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+    flex-wrap: wrap; 
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto; 
+    padding: 0 1rem; 
+}
+.footer-logo-section {
+    flex: 1; 
+    min-width: 200px; 
+    text-align: center;
+}
+.footer-logo {
+    max-width: 150px; 
+    height: auto; 
+    border-radius: 8px; 
+    margin-bottom: 0.5rem; 
+}
+.footer-contact-section {
+    flex: 1; 
+    min-width: 200px;
+    text-align: center; 
+}
+.footer-copyright {
+    margin-top: 2rem; 
+    text-align: center;
+    width: 100%; 
+}
+
+.hero-description,
+.o-mnie-text,
+.price-list td,
+.cennik-note,
+.kontakt-info-map-column p,
+.footer-section p,
+.footer-copyright,
+.toast,
+button, input, textarea, label, 
+nav a 
+{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400; 
+}
+
+.hero-subtitle,
+.hero-subtitle span,
+.section-title-center, 
+.training-details h4,
+.training-parent-info-box h4,
+.kontakt-location-title, 
+.footer-section h3
+{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.o-mnie-text-bold,
+strong 
+{
+    font-weight: 600; 
+}
+
+code, pre { 
+    font-family: monospace;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.terapia-description-box {
+    background-color: var(--background);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
+    display: flex; 
+    gap: 2rem; 
+    align-items: flex-start; 
+}
+
+.terapia-text-column {
+    flex-basis: 60%; 
+}
+
+.terapia-list-column {
+    flex-basis: 40%; 
+}
+
+.terapia-list-column h4 { 
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--secondary); 
+    font-weight: 700;
+}
+
+.terapia-list-column ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin: 0;
+}
+
+.terapia-list-column li {
+    margin-bottom: 0.5rem;
+    color: var(--text-on-light);
+}
+
+.terapia-description-box p { 
+    color: var(--text-on-light);
+    margin-bottom: 1rem; 
+}
+.terapia-description-box p:last-child {
+    margin-bottom: 0;
+}
+
+
+.oferta-section-block .section-title-center { 
+    margin-bottom: 1.5rem; 
+}
+
+.terapia-text-column h4 { 
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--secondary); 
+    font-weight: 700;
+}
+
+.o-mnie-image-column::before,
+.kontakt-photo-column::before {
+    content: '';
+    position: absolute;
+    background-image: url('images/33.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center; 
+    width: 50%; 
+    height: 50%; 
+    opacity: 0.5; 
+    z-index: 0; 
+    top: -25px; 
+    right: -25px; 
+    transform: rotate(20deg); 
+    pointer-events: none; 
+}
+
+.o-mnie-image-column::after,
+.kontakt-photo-column::after {
+    content: '';
+    position: absolute;
+    background-image: url('images/22.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center; 
+    width: 45%; 
+    height: 45%; 
+    opacity: 0.5; 
+    z-index: 0; 
+    bottom: -20px; 
+    left: -20px; 
+    transform: rotate(-15deg); 
+    pointer-events: none;
+}
+
+.kontakt-photo-column::before {
+    top: -30px;
+    right: -40px;
+    transform: rotate(220deg); 
+    width: 52%;
+    height: 52%;
+    opacity: 0.6;
+}
+.kontakt-photo-column::after {
+    bottom: -30px;
+    left: -40px;
+    width: 40%;
+    height: 40%;
+    opacity: 0.4;
+}
+.o-mnie-image-column::before { 
+    width: 52%;
+    height: 52%;
+    opacity: 0.6;
+    top: -100px; 
+    right: -50px; 
+    transform: rotate(220deg);
+}
+
+.o-mnie-image-column::after { 
+    width: 40%;
+    height: 40%;
+    opacity: 0.4;
+    bottom: -50px;
+    left: -30px;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    nav a {
+        margin: 0.3rem 0;
+        width: 80%;
+        text-align: center;
+    }
+
+    .o-mnie-container,
+    .cennik-section,
+    .kontakt-flex-container,
+    .footer-flex-container, 
+    .terapia-description-box {
+        flex-direction: column;
+    }
+    
+    .o-mnie-image-column,
+    .cennik-image-column,
+    .kontakt-photo-column {
+        margin-top: 2rem; 
+        margin-bottom: 1rem; 
+        align-items: center; 
+    }
+    .cennik-image-column {
+        padding-right: 0;
+    }
+    .o-mnie-text-column,
+    .cennik-table-column,
+    .kontakt-info-map-column,
+    .terapia-text-column,
+    .terapia-list-column {
+        flex-basis: 100%; 
+    }
+    .terapia-list-column {
+        margin-top: 1.5rem;
+    }
+
+    .oferta-grid,
+    .oferta-grid-two-column {
+        grid-template-columns: 1fr; 
+    }
+    
+    .contact-form {
+        grid-template-columns: 1fr;
+    }
+    .contact-form .full-width {
+        grid-column: span 1;
+    }
+
+    .footer-section {
+        min-width: 100%; 
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+    .footer-logo-section p {
+        margin-bottom: 1rem;
+    }
+
+    h1 { font-size: 2rem; }
+    h2, .section-title { font-size: 1.5rem; }
+    h3, .section-title-center, .terapia-text-column h4, .terapia-list-column h4, .training-details h4 { font-size: 1.25rem; }
+    body { font-size: 100%; }
+    .hero-subtitle span { font-size: 1.3em; }
+
+    .container {
+        width: 95%;
+        padding: 1rem 0;
+    }
+    section {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    .hero {
+        padding: 2rem 0.5rem;
+    }
+    .oferta-section-block {
+        padding: 1.5rem;
+    }
+    .training-details:not(.hidden) { 
+        padding: 1rem;
+    }
+    .price-list th, .price-list td,
+    .training-details-table th, .training-details-table td,
+    .training-details-bank-table td {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+    .training-details-table, .training-details-bank-table {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        position: static; 
+    }
+    section::before { 
+        height: 10px; 
+        margin-top: -10px;
+    }
+    .hero {
+        padding: 2rem 1rem; 
+    }
+    section {
+        padding: 1.5rem; 
+    }
+     .oferta-section-block {
+        padding: 1rem; 
+        margin-bottom: 1.5rem;
+    }
+    .price-list th, .price-list td {
+        padding: 0.5rem; 
+    }
+    .o-mnie-image-column::before,
+    .kontakt-photo-column::before,
+    .o-mnie-image-column::after,
+    .kontakt-photo-column::after {
+        width: 35%; 
+        height: 35%;
+    }
+    .o-mnie-image-column::before { top: -40px; right: -20px; }
+    .o-mnie-image-column::after { bottom: -20px; left: -20px; }
+    .kontakt-photo-column::before { top: -20px; right: -20px; }
+    .kontakt-photo-column::after { bottom: -20px; left: -15px; }
+}
